@@ -15,11 +15,12 @@ pipeline {
                 sh 'test -f public/index.html'
                 sh 'grep -qi "<html" public/index.html'
                 sh 'grep -qi "</html>" public/index.html'
-                sh 'grep -qi "<Versi 4 - title dihapus>" public/index.html'
+                sh 'grep -qi "<title>" public/index.html'
             }
         }
         stage('Deploy') {
             steps {
+                sh 'sed -i "s/__BUILD__/$BUILD_NUMBER/" public/index.html'
                 sh 'cp -r public/* /var/www/html/'
             }
         }
