@@ -1,28 +1,15 @@
-pipeline {
-    agent any
-    options {
-        skipDefaultCheckout()
-    }
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-                sh 'ls -la public'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'test -f public/index.html'
-                sh 'grep -qi "<html" public/index.html'
-                sh 'grep -qi "</html>" public/index.html'
-                sh 'grep -qi "<title>" public/index.html'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'grep -qi "<footer" public/index.html'
-                sh 'cp -r public/* /var/www/html/'
-            }
-        }
-    }
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Latihan CI/CD</title>
+</head>
+<body>
+
+    <h1>Halo, ini web latihan CI/CD</h1>
+
+    <footer>
+        Dibuat oleh Umi Khoirullatifah
+    </footer>
+
+</body>
+</html>
