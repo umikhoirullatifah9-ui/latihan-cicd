@@ -15,7 +15,7 @@ pipeline {
                 sh 'test -f public/index.html'
                 sh 'grep -qi "<html" public/index.html'
                 sh 'grep -qi "</html>" public/index.html'
-                sh 'grep -qi "Versi 4 - title dihapus" public/index.html'
+                sh 'grep -qi "<Versi 4 - title dihapus>" public/index.html'
             }
         }
         stage('Deploy') {
