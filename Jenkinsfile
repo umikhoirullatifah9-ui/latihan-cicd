@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'sed -i "s/__BUILD__/$BUILD_NUMBER/" public/index.html'
+                sh 'grep -qi "<footer" public/index.html'
                 sh 'cp -r public/* /var/www/html/'
             }
         }
